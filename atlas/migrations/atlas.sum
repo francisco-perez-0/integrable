@@ -1,4 +1,7 @@
-h1:GzAkW7GhMJ/QmR7zvkYpD0+4CaYZ1x29M2WivNsgNgk=
+h1:lkx/DazSXJRZncaSLbUDajs0HSk2rwQXeXm8P/Q3/nA=
 20240110234835_create_users.sql h1:Dea/vlcwJf6TXTiipB2CUpzOaw15uJaUzru8U/haYL4=
 20240110234907_add_birthdate_and_city.sql h1:TOwAXCKSPZk0yGULaV/mSTnvM7jxPmrCWeqjieoYpXY=
 20240115182009_add_checks.sql h1:uwdXmmVOJQ9guha1zB45I7T14l3TRqlLnQ/Iqtt+I0I=
+20250606191840_add_user_fields.sql h1:ydjCXw+ZTIjGhkJU8l9Ru6HUnii3hCpi6ljtMRtfdeI=
+20250606192345_updated_at_can_be_null.sql h1:SJPsImh6+WP584KpWW3upDdDAfY1XKQPoR+g/P5E/wo=
+20250606194433_last_access_time_can_be_null.sql h1:/BppF0mhntOVpSrtLg0QOjHF+7ra9Bw/HATpeTFozZw=

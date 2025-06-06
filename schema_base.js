@@ -18,6 +18,30 @@ const baseFields = [
   {
     name: 'created_at',
     type: 'timestamp with time zone'
+  },
+  {
+    name: 'updated_at',
+    type: 'timestamp with time zone'
+  },
+  {
+    name: 'last_access_time',
+    type: 'timestamp with time zone'
+  },
+  {
+    name: 'first_name',
+    type: 'character varying'
+  },
+  {
+    name: 'last_name',
+    type: 'character varying'
+  },
+  {
+    name: 'password',
+    type: 'character varying'
+  },
+  {
+    name: 'enabled',
+    type: 'boolean'
   }
 ]
 

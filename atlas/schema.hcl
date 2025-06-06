@@ -26,6 +26,30 @@ table "users" {
     null = false
     type = character_varying(30)
   }
+  column "updated_at" {
+    null = true
+    type = timestamptz
+  }
+  column "last_access_time" {
+    null = true
+    type = timestamptz
+  }
+  column "first_name" {
+    null = false
+    type = character_varying(40)
+  }
+  column "last_name" {
+    null = false
+    type = character_varying(40)
+  }
+  column "password" {
+    null = false
+    type = character_varying(20)
+  }
+  column "enabled" {
+    null = false 
+    type = boolean
+  }
   primary_key {
     columns = [column.email]
   }

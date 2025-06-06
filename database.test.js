@@ -100,8 +100,8 @@ describe('Test database', () => {
     test('Insert a valid user', async () => {
       let result = await client.query(
         `INSERT INTO
-         users (email, username, birthdate, city)
-         VALUES ('user@example.com', 'user', '2024-01-02', 'La Plata')`
+         users (email, username, birthdate, city, first_name, last_name, password, enabled)
+         VALUES ('user@example.com', 'user', '2024-01-02', 'La Plata', 'Francisco', 'Perez', '1234', 'false')`
       )
 
       expect(result.rowCount).toBe(1)
@@ -120,16 +120,16 @@ describe('Test database', () => {
 
     test('Insert a user with an invalid email', async () => {
       const query = `INSERT INTO
-                     users (email, username, birthdate, city)
-                     VALUES ('user', 'user', '2024-01-02', 'La Plata')`
+                     users (email, username, birthdate, city, first_name, last_name, password, enabled)
+                     VALUES ('user', 'user', '2024-01-02', 'La Plata', 'Francisco', 'Perez', '1234', 'false')`
 
       await expect(client.query(query)).rejects.toThrow('users_email_check')
     })
 
     test('Insert a user with an invalid birthdate', async () => {
       const query = `INSERT INTO
-                     users (email, username, birthdate, city)
-                     VALUES ('user@example.com', 'user', 'invalid_date', 'La Plata')`
+                     users (email, username, birthdate, city, first_name, last_name, password, enabled)
+                     VALUES ('user@example.com', 'user', 'invalid_date', 'La Plata', 'Francisco', 'Perez', '1234', 'false')`
 
       await expect(client.query(query)).rejects.toThrow('invalid input syntax for type date')
     })
@@ -140,6 +140,28 @@ describe('Test database', () => {
                      VALUES ('user@example.com', 'user', '2024-01-02')`
 
       await expect(client.query(query)).rejects.toThrow('null value in column "city"')
+    })
+
+    test('Insert a user without first name', async () => {
+      const query = `INSERT INTO
+                     users (email, username, birthdate, city, last_name, password)
+                     VALUES ('user@example.com', 'user', '2025-06-06', 'La Plata', 'Perez', '1234')`
+      await expect(client.query(query)).rejects.toThrow('null value in column "first_name"')
+    })
+
+    test('Insert a user without last name', async () => {
+      const query = `INSERT INTO
+                     users (email, username, birthdate, city, first_name, password)
+                     VALUES ('user@example.com', 'user', '2025-06-06', 'La Plata', 'Francisco', '1234')`
+
+      await expect(client.query(query)).rejects.toThrow('null value in column "last_name"')
+    })
+
+    test('Insert a user without password', async () => {
+      const query = `INSERT INTO
+                     users (email, username, birthdate, city, first_name, last_name)
+                     VALUES ('user@example.com', 'user', '2025-06-06', 'La Plata','Francisco', 'Perez')`
+      await expect(client.query(query)).rejects.toThrow('null value in column "password"')
     })
   })
 })
