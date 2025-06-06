@@ -1,0 +1,15 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": ["fbjs"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "max-len": ["warn", { "code": 150, "ignoreComments": true, "ignoreStrings": true }]
+  }
+}
